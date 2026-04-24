@@ -1,97 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIR Telangana 2026 Form</title>
-    <link rel="stylesheet" href="https://path-to-uidai-branding.css">
-    <script src="https://cdn.example.com/form-integration.js"></script>
+    <title>SIR Telangana 2026 UIDAI Themed Form</title>
+    <script>
+        // JavaScript for dynamically populating districts and constituencies
+        const districts = ["Adilabad", "Hyderabad", "Khammam", "Mahbubnagar", "Medak", "Nalgonda", "Nizamabad", "Rangareddy", "Secunderabad", "Wanaparthy", "Warangal", "Karimnagar"];
+        function populateDistricts() {
+            const districtSelect = document.getElementById('district');
+            districts.forEach(district => {
+                const option = document.createElement('option');
+                option.value = district;
+                option.text = district;
+                districtSelect.appendChild(option);
+            });
+        }
+    
+        function populateConstituencies() {
+            const constituencySelect = document.getElementById('constituency');
+            // Logic to populate constituencies dynamically
+            // E.g., based on selected district, either hardcoded or fetched from an endpoint
+        }
+    
+        function init() {
+            populateDistricts();
+            // Add event listener for district change
+            document.getElementById('district').addEventListener('change', populateConstituencies);
+            // FormInit integration code goes here.
+        }
+    
+        window.onload = init;
+    </script>
 </head>
 <body>
-    <form id="sir-form">
-        <h1>Submit Your SIR Form</h1>
-        <section id="personal-info">
-            <h2>Personal & Authenticated Contact</h2>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            
-            <label for="contact">Contact:</label>
-            <input type="text" id="contact" name="contact" required>
-        </section>
+    <h1>SIR Telangana 2026 UIDAI Themed Form</h1>
+    <form>
+        <h2>Personal & Authenticated Contact</h2>
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" required><br>
+        <label for="aadhaarNumber">Aadhaar Number:</label>
+        <input type="text" id="aadhaarNumber" required><br>
+        <label for="mobileNumber">Aadhaar-Linked Mobile Number:</label>
+        <input type="text" id="mobileNumber" required style="background-color: yellow;"><br>
+        <label for="fathersName">Father's Name:</label>
+        <input type="text" id="fathersName" required><br>
+        <label for="mothersName">Mother's Name:</label>
+        <input type="text" id="mothersName" required><br>
+        <label for="husbandsName">Husband's Name:</label>
+        <input type="text" id="husbandsName"><br>
         
-        <section id="electoral-geography">
-            <h2>Electoral Geography</h2>
-            <label for="district">District:</label>
-            <select id="district" name="district" required>
-                <option value="">Select District</option>
-                <option value="Adilabad">Adilabad</option>
-                <option value="Hyderabad">Hyderabad</option>
-                <option value="Warangal">Warangal</option>
-                <option value="Khammam">Khammam</option>
-                <option value="Mahbubnagar">Mahbubnagar</option>
-                <option value="Nalgonda">Nalgonda</option>
-                <option value="Nizamabad">Nizamabad</option>
-                <option value="Ranga Reddy">Ranga Reddy</option>
-                <option value="Medchal">Medchal</option>
-                <option value="Jagitial">Jagitial</option>
-                <option value="Kumuram Bheem">Kumuram Bheem</option>
-                <option value="Jagtial">Jagtial</option>
-            </select>
-            <label for="assembly-constituency">Assembly Constituency:</label>
-            <select id="assembly-constituency" name="assembly-constituency" required>
-                <option value="">Select Assembly Constituency</option>
-                <!-- Assembly Constituencies will be populated dynamically based on the district selection -->
-            </select>
-        </section>
+        <h2>Electoral Geography</h2>
+        <label for="district">District:</label>
+        <select id="district" required></select><br>
+        <label for="constituency">Assembly Constituency:</label>
+        <select id="constituency" required></select><br>
+        <label for="historicalConstituency">Historical Constituency:</label>
+        <input type="text" id="historicalConstituency"><br>
         
-        <section id="issue-type">
-            <h2>Issue Type & Documentation</h2>
-            <label for="issue-type">Issue Type:</label>
-            <select id="issue-type" name="issue-type" required>
-                <option value="">Select Issue Type</option>
-                <option value="Type1">Type 1</option>
-                <option value="Type2">Type 2</option>
-                <option value="Type3">Type 3</option>
-            </select>
-            <label for="document-proof">Document Proof Type:</label>
-            <select id="document-proof" name="document-proof" required>
-                <option value="">Select Document Proof</option>
-                <option value="Proof1">Proof 1</option>
-                <option value="Proof2">Proof 2</option>
-            </select>
-        </section>
+        <h2>Issue Type & Documentation</h2>
+        <label for="issueType">Primary Issue Category:</label>
+        <input type="text" id="issueType" required><br>
+        <label for="documentProof">Document Proof Selection:</label>
+        <input type="file" id="documentProof" required><br>
         
-        <button type="submit">Submit</button>
+        <input type="submit" value="Submit">
     </form>
-    <script>
-        // Initialize the form integration using the provided FormInit form ID
-        FormInit.initialize('gkx9ia24mhn');
-
-        // Logic for dynamic Assembly Constituency selection
-        document.getElementById('district').addEventListener('change', function() {
-            const district = this.value;
-            // Fetch and populate assembly constituencies based on selected district
-            fetch(`https://api.example.com/assembly?district=${district}`)
-                .then(response => response.json())
-                .then(data => {
-                    const acSelect = document.getElementById('assembly-constituency');
-                    acSelect.innerHTML = '<option value="">Select Assembly Constituency</option>';
-                    data.forEach(ac => {
-                        const option = document.createElement('option');
-                        option.value = ac.id;
-                        option.textContent = ac.name;
-                        acSelect.appendChild(option);
-                    });
-                });
-        });
-
-        // Handle form submission
-        document.getElementById('sir-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            // Submit the form data logic here
-            // Display success/error messages based on the outcome
-            alert('Form submitted successfully!');
-        });
-    </script>
 </body>
 </html>
