@@ -2,241 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIR Telangana 2026 | Aadhaar Services Portal</title>
-    <style>
-        :root {
-            --uidai-blue: #09347a;
-            --uidai-orange: #ff9933;
-            --gov-grey: #f4f7f9;
-            --border-color: #ced4da;
-        }
-
-        body {
-            font-family: "Segoe UI", Arial, sans-serif;
-            background-color: var(--gov-grey);
-            margin: 0; padding: 0;
-            color: #333;
-        }
-
-        /* UIDAI Top Header Bar */
-        .top-nav {
-            background: #fff;
-            border-bottom: 3px solid var(--uidai-orange);
-            padding: 10px 10%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .container {
-            max-width: 850px;
-            margin: 30px auto;
-            background: #fff;
-            border-radius: 4px;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-
-        .header-banner {
-            background: var(--uidai-blue);
-            color: white;
-            padding: 25px;
-            text-align: center;
-        }
-
-        .form-body { padding: 35px; }
-
-        section { margin-bottom: 30px; }
-        
-        .section-header {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--uidai-blue);
-            border-bottom: 1px solid #dee2e6;
-            margin-bottom: 20px;
-            padding-bottom: 8px;
-        }
-
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .full { grid-column: span 2; }
-
-        label { display: block; font-weight: 600; font-size: 13px; margin-bottom: 8px; color: #495057; }
-        
-        input, select, textarea {
-            width: 100%; padding: 12px; border: 1px solid var(--border-color);
-            border-radius: 4px; font-size: 14px; box-sizing: border-box;
-            background-color: #fff;
-        }
-
-        input:focus, select:focus { border-color: var(--uidai-blue); outline: none; box-shadow: 0 0 0 3px rgba(9,52,122,0.1); }
-
-        .highlight-box {
-            background: #fff9f2;
-            border-left: 5px solid var(--uidai-orange);
-            padding: 20px;
-            margin-bottom: 25px;
-        }
-
-        .submit-btn {
-            background: var(--uidai-blue);
-            color: white;
-            border: none;
-            padding: 15px;
-            width: 100%;
-            font-size: 16px;
-            font-weight: 700;
-            border-radius: 4px;
-            cursor: pointer;
-            text-transform: uppercase;
-        }
-
-        .submit-btn:hover { background: #072a63; }
-
-        .footer { text-align: center; font-size: 12px; color: #6c757d; padding: 20px; }
-
-        @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } .full { grid-column: span 1; } }
-    </style>
+    <title>Form Integration</title>
 </head>
 <body>
 
-<div class="top-nav">
-    <div style="color: var(--uidai-blue); font-size: 22px; font-weight: 800;">SIR 2026</div>
-    <div style="text-align: right; font-size: 11px;">NGO INITIATIVE<br>Electoral Revision Services</div>
-</div>
-
-<div class="container">
-    <div class="header-banner">
-        <h2 style="margin:0;">Data Verification & Support Portal</h2>
-        <p style="margin:5px 0 0; opacity:0.8;">Special Intensive Revision (SIR) 2026 - Digital India Initiative</p>
-    </div>
-
-    <div class="form-body">
-        <form action="YOUR_BACKEND_URL_HERE" method="POST">
-            
-            <section>
-                <div class="section-header">Personal & Authenticated Contact</div>
-                <div class="grid">
-                    <div class="field"><label>Full Name</label><input type="text" name="name" required></div>
-                    <div class="field"><label>Aadhaar Number (VID)</label><input type="text" name="aadhar" maxlength="12" placeholder="XXXX XXXX XXXX"></div>
-                    
-                    <div class="field highlight-box full">
-                        <label style="color: var(--uidai-blue);">Aadhaar-Linked Mobile Number</label>
-                        <input type="tel" name="aadhar_linked_phone" placeholder="Enter number linked with Aadhaar OTP" required>
-                        <small style="display:block; margin-top:5px; color:#d97706;">* This number will be used for official SIR OTP verification.</small>
-                    </div>
-
-                    <div class="field"><label>Father's Name</label><input type="text" name="father"></div>
-                    <div class="field"><label>Mother's Name</label><input type="text" name="mother"></div>
-                    <div class="field full"><label>Husband's Name (Optional)</label><input type="text" name="husband"></div>
-                </div>
-            </section>
-
-            <section>
-                <div class="section-header">OLD CONSTITUENCY (Telangana)</div>
-                <div class="grid">
-                    <div class="field">
-                        <label>District</label>
-                        <select id="distSelect" name="district" onchange="updateACList()" required>
-                            <option value="">-- Choose District --</option>
-                            </select>
-                    </div>
-                    <div class="field">
-                        <label>Current Assembly Constituency (AC)</label>
-                        <select id="acSelect" name="current_ac" required disabled>
-                            <option value="">Select District First</option>
-                        </select>
-                    </div>
-                    <div class="field full"><label>Historical Constituency (As of 2002)</label><input type="text" name="old_ac"></div>
-                </div>
-            </section>
-
-            <section>
-                <div class="section-header">Issue Type & Documentation</div>
-                <div class="grid">
-                    <div class="field">
-                        <label>Primary Issue </label>
-                        <select name="issue_category" required>
-                            <option value="">-- Select Category --</option>
-                            <option value="MISSING_NAME">Name Missing from Roll</option>
-                            <option value="SHIFTED">Shifted / Migration Case</option>
-                            <option value="WRONG_DELETION">Wrongful Deletion Request</option>
-                            <option value="DATA_CORRECTION">Correction in Personal Info</option>
-                            <option value="DEATH_REPORT">Reporting Deceased Voter</option>
-                        </select>
-                    </div>
-                    <div class="field">
-                        <label>Available Proof for Verification</label>
-                        <select name="document_check" required>
-                            <option value="">-- Select Document --</option>
-                            <option value="VOTER_ID">Old Voter ID (EPIC Card)</option>
-                            <option value="AADHAAR_DOC">Aadhaar Card</option>
-                            <option value="RATION_CARD">Ration Card (FSC)</option>
-                            <option value="PASSPORT">Indian Passport</option>
-                            <option value="ELECTRICITY_BILL">Electricity Bill (Current Address)</option>
-                            <option value="GAS_CONNECTION">Gas Connection Receipt</option>
-                            <option value="RESIDENTIAL_CERT">Residential Certificate</option>
-                            <option value="MUNICIPAL_TAX">Property/Municipal Tax Receipt</option>
-                        </select>
-                    </div>
-                    <div class="field full"><label>Additional Description / Issue Details</label><textarea name="remarks" rows="3"></textarea></div>
-                </div>
-            </section>
-
-            <button type="submit" class="submit-btn">Proceed to Verification</button>
-        </form>
-    </div>
-    
-    <div class="footer">
-        Digital India Initiatives | Secured Government Data Capture <br>
-        © 2026 SIR Telangana Electoral Services
-    </div>
-</div>
+<form id="form-init" action="https://forminit.com/api/forms/gkx9ia24mhn/submissions" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required />
+    <input type="email" name="email" placeholder="Your Email" required />
+    <button type="submit">Submit</button>
+</form>
 
 <script>
-    // Full 33 Districts Mapping for Telangana
-    const telanganaData = {
-        "Hyderabad": ["Musheerabad", "Malakpet", "Amberpet", "Khairatabad", "Jubilee Hills", "Sanathnagar", "Nampally", "Karwan", "Goshamahal", "Charminar", "Chandrayangutta", "Yakutpura", "Bahadurpura", "Secunderabad", "Secunderabad Cantt."],
-        "Medchal-Malkajgiri": ["Medchal", "Malkajgiri", "Quthbullapur", "Kukatpally", "Uppal"],
-        "Ranga Reddy": ["Ibrahimpatnam", "Lal Bahadur Nagar", "Maheshwaram", "Rajendranagar", "Serilingampally", "Chevella", "Kalwakurthy", "Shadnagar"],
-        "Nizamabad": ["Armur", "Bodhan", "Nizamabad Urban", "Nizamabad Rural", "Balkonda"],
-        "Warangal": ["Warangal West", "Warangal East", "Wardhannapet", "Narsampet", "Parkal"],
-        "Karimnagar": ["Karimnagar", "Choppadandi", "Huzurabad", "Manakondur"],
-        "Khammam": ["Khammam", "Palair", "Madhira", "Wyra", "Sathupalle"],
-        "Nalgonda": ["Nalgonda", "Munugode", "Devarakonda", "Nagarjuna Sagar", "Miryalaguda", "Nakrekal", "Thungathurthi", "Alair"],
-        "Siddipet": ["Siddipet", "Gajwel", "Dubbak", "Husnabad"],
-        "Sangareddy": ["Sangareddy", "Patancheru", "Narayankhed", "Andole", "Zahirabad"],
-        "Mahabubnagar": ["Mahabubnagar", "Jadcherla", "Devarkadra", "Narayanpet"],
-        "Jagtial": ["Jagtial", "Koratla", "Dharmapuri"]
-    };
+    document.getElementById('form-init').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const formData = new FormData(this);
 
-    const dMenu = document.getElementById('distSelect');
-    const aMenu = document.getElementById('acSelect');
-
-    // Populate Districts on Load
-    Object.keys(telanganaData).sort().forEach(district => {
-        let opt = document.createElement('option');
-        opt.value = district;
-        opt.innerHTML = district;
-        dMenu.appendChild(opt);
+        fetch(this.action, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert('Submission Successful!'); // success message
+        })
+        .catch(error => {
+            alert('Submission Failed!'); // error message
+        });
     });
-
-    function updateACList() {
-        const selectedDist = dMenu.value;
-        aMenu.innerHTML = '<option value="">-- Choose Constituency --</option>';
-        
-        if(telanganaData[selectedDist]) {
-            aMenu.disabled = false;
-            telanganaData[selectedDist].forEach(ac => {
-                let opt = document.createElement('option');
-                opt.value = ac;
-                opt.innerHTML = ac;
-                aMenu.appendChild(opt);
-            });
-        } else {
-            aMenu.disabled = true;
-        }
-    }
 </script>
 
 </body>
