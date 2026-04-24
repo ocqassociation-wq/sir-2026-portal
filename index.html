@@ -2,36 +2,96 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Integration</title>
+    <title>SIR Telangana 2026 Form</title>
+    <link rel="stylesheet" href="https://path-to-uidai-branding.css">
+    <script src="https://cdn.example.com/form-integration.js"></script>
 </head>
 <body>
+    <form id="sir-form">
+        <h1>Submit Your SIR Form</h1>
+        <section id="personal-info">
+            <h2>Personal & Authenticated Contact</h2>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="contact">Contact:</label>
+            <input type="text" id="contact" name="contact" required>
+        </section>
+        
+        <section id="electoral-geography">
+            <h2>Electoral Geography</h2>
+            <label for="district">District:</label>
+            <select id="district" name="district" required>
+                <option value="">Select District</option>
+                <option value="Adilabad">Adilabad</option>
+                <option value="Hyderabad">Hyderabad</option>
+                <option value="Warangal">Warangal</option>
+                <option value="Khammam">Khammam</option>
+                <option value="Mahbubnagar">Mahbubnagar</option>
+                <option value="Nalgonda">Nalgonda</option>
+                <option value="Nizamabad">Nizamabad</option>
+                <option value="Ranga Reddy">Ranga Reddy</option>
+                <option value="Medchal">Medchal</option>
+                <option value="Jagitial">Jagitial</option>
+                <option value="Kumuram Bheem">Kumuram Bheem</option>
+                <option value="Jagtial">Jagtial</option>
+            </select>
+            <label for="assembly-constituency">Assembly Constituency:</label>
+            <select id="assembly-constituency" name="assembly-constituency" required>
+                <option value="">Select Assembly Constituency</option>
+                <!-- Assembly Constituencies will be populated dynamically based on the district selection -->
+            </select>
+        </section>
+        
+        <section id="issue-type">
+            <h2>Issue Type & Documentation</h2>
+            <label for="issue-type">Issue Type:</label>
+            <select id="issue-type" name="issue-type" required>
+                <option value="">Select Issue Type</option>
+                <option value="Type1">Type 1</option>
+                <option value="Type2">Type 2</option>
+                <option value="Type3">Type 3</option>
+            </select>
+            <label for="document-proof">Document Proof Type:</label>
+            <select id="document-proof" name="document-proof" required>
+                <option value="">Select Document Proof</option>
+                <option value="Proof1">Proof 1</option>
+                <option value="Proof2">Proof 2</option>
+            </select>
+        </section>
+        
+        <button type="submit">Submit</button>
+    </form>
+    <script>
+        // Initialize the form integration using the provided FormInit form ID
+        FormInit.initialize('gkx9ia24mhn');
 
-<form id="form-init" action="https://forminit.com/api/forms/gkx9ia24mhn/submissions" method="POST">
-    <input type="text" name="name" placeholder="Your Name" required />
-    <input type="email" name="email" placeholder="Your Email" required />
-    <button type="submit">Submit</button>
-</form>
-
-<script>
-    document.getElementById('form-init').addEventListener('submit', function(event) {
-        event.preventDefault();
-        const formData = new FormData(this);
-
-        fetch(this.action, {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            alert('Submission Successful!'); // success message
-        })
-        .catch(error => {
-            alert('Submission Failed!'); // error message
+        // Logic for dynamic Assembly Constituency selection
+        document.getElementById('district').addEventListener('change', function() {
+            const district = this.value;
+            // Fetch and populate assembly constituencies based on selected district
+            fetch(`https://api.example.com/assembly?district=${district}`)
+                .then(response => response.json())
+                .then(data => {
+                    const acSelect = document.getElementById('assembly-constituency');
+                    acSelect.innerHTML = '<option value="">Select Assembly Constituency</option>';
+                    data.forEach(ac => {
+                        const option = document.createElement('option');
+                        option.value = ac.id;
+                        option.textContent = ac.name;
+                        acSelect.appendChild(option);
+                    });
+                });
         });
-    });
-</script>
 
+        // Handle form submission
+        document.getElementById('sir-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Submit the form data logic here
+            // Display success/error messages based on the outcome
+            alert('Form submitted successfully!');
+        });
+    </script>
 </body>
 </html>
