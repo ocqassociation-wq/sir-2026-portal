@@ -1,67 +1,56 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>SIR Telangana 2026 UIDAI Themed Form</title>
-    <script>
-        // JavaScript for dynamically populating districts and constituencies
-        const districts = ["Adilabad", "Hyderabad", "Khammam", "Mahbubnagar", "Medak", "Nalgonda", "Nizamabad", "Rangareddy", "Secunderabad", "Wanaparthy", "Warangal", "Karimnagar"];
-        function populateDistricts() {
-            const districtSelect = document.getElementById('district');
-            districts.forEach(district => {
-                const option = document.createElement('option');
-                option.value = district;
-                option.text = district;
-                districtSelect.appendChild(option);
-            });
-        }
-    
-        function populateConstituencies() {
-            const constituencySelect = document.getElementById('constituency');
-            // Logic to populate constituencies dynamically
-            // E.g., based on selected district, either hardcoded or fetched from an endpoint
-        }
-    
-        function init() {
-            populateDistricts();
-            // Add event listener for district change
-            document.getElementById('district').addEventListener('change', populateConstituencies);
-            // FormInit integration code goes here.
-        }
-    
-        window.onload = init;
-    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UIDAI SIR 2026 Form</title>
 </head>
 <body>
-    <h1>SIR Telangana 2026 UIDAI Themed Form</h1>
-    <form>
-        <h2>Personal & Authenticated Contact</h2>
-        <label for="fullName">Full Name:</label>
-        <input type="text" id="fullName" required><br>
-        <label for="aadhaarNumber">Aadhaar Number:</label>
-        <input type="text" id="aadhaarNumber" required><br>
-        <label for="mobileNumber">Aadhaar-Linked Mobile Number:</label>
-        <input type="text" id="mobileNumber" required style="background-color: yellow;"><br>
-        <label for="fathersName">Father's Name:</label>
-        <input type="text" id="fathersName" required><br>
-        <label for="mothersName">Mother's Name:</label>
-        <input type="text" id="mothersName" required><br>
-        <label for="husbandsName">Husband's Name:</label>
-        <input type="text" id="husbandsName"><br>
-        
-        <h2>Electoral Geography</h2>
-        <label for="district">District:</label>
-        <select id="district" required></select><br>
-        <label for="constituency">Assembly Constituency:</label>
-        <select id="constituency" required></select><br>
-        <label for="historicalConstituency">Historical Constituency:</label>
-        <input type="text" id="historicalConstituency"><br>
-        
-        <h2>Issue Type & Documentation</h2>
-        <label for="issueType">Primary Issue Category:</label>
-        <input type="text" id="issueType" required><br>
-        <label for="documentProof">Document Proof Selection:</label>
-        <input type="file" id="documentProof" required><br>
-        
-        <input type="submit" value="Submit">
+    <form id="uidai-sir-form">
+        <h1>UIDAI Themed SIR 2026 Form</h1>
+        <section>
+            <h2>Personal Contact</h2>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" required>
+        </section>
+        <section>
+            <h2>Electoral Geography</h2>
+            <label for="state">State:</label>
+            <select id="state" name="state" required>
+                <option value="">Select State</option>
+                <!-- Options will be populated dynamically -->
+            </select>
+            <label for="district">District:</label>
+            <select id="district" name="district" required>
+                <option value="">Select District</option>
+                <!-- Options will be populated dynamically -->
+            </select>
+            <label for="constituency">Constituency:</label>
+            <select id="constituency" name="constituency" required>
+                <option value="">Select Constituency</option>
+                <!-- Options will be populated dynamically -->
+            </select>
+        </section>
+        <section>
+            <h2>Issue Type</h2>
+            <label for="issue">Select Issue:</label>
+            <select id="issue" name="issue" required>
+                <option value="">Select Issue</option>
+                <option value="complaint">Complaint</option>
+                <option value="suggestion">Suggestion</option>
+                <option value="query">Query</option>
+            </select>
+        </section>
+        <button type="submit">Submit</button>
     </form>
+    <script>
+        // FormInit integration code
+        const formId = 'gkx9ia24mhn';
+        // Other FormInit logic...
+    </script>
 </body>
 </html>
