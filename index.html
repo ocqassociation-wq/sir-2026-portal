@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIR Telangana 2026 AIMTM | intiative by Adnan Quddusi Khairatabad President</title>
+    <title>SIR Telangana 2026 AIMTM | Adnan Quddusi Initiative</title>
     <style>
         :root {
             --uidai-blue: #09347a;
@@ -81,59 +81,60 @@
             background: var(--uidai-blue);
             color: white;
             border: none;
-            padding: 15px;
+            padding: 18px;
             width: 100%;
             font-size: 16px;
             font-weight: 700;
             border-radius: 4px;
             cursor: pointer;
             text-transform: uppercase;
+            transition: 0.3s;
         }
 
-        .submit-btn:hover { background: #072a63; }
+        .submit-btn:hover { background: #072a63; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
         .submit-btn:disabled { background: #6c757d; cursor: not-allowed; }
 
-        .footer { text-align: center; font-size: 12px; color: #6c757d; padding: 20px; }
+        .footer { text-align: center; font-size: 12px; color: #6c757d; padding: 20px; border-top: 1px solid #eee; }
 
-        @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } .full { grid-column: span 1; } }
+        @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } .full { grid-column: span 1; } .top-nav { padding: 10px 5%; flex-direction: column; text-align: center; gap: 10px; } }
     </style>
 </head>
 <body>
 
 <div class="top-nav">
     <div style="color: var(--uidai-blue); font-size: 22px; font-weight: 800;">SIR 2026</div>
-    <div style="text-align: right; font-size: 11px;">Adnan Quddusi INITIATIVE<br>Electoral Revision Services</div>
+    <div style="text-align: right; font-size: 11px;">ADNAN QUDDUSI INITIATIVE<br>Electoral Revision Services</div>
 </div>
 
 <div class="container">
     <div class="header-banner">
         <h2 style="margin:0;">Data Verification & Support Portal</h2>
-        <p style="margin:5px 0 0; opacity:0.8;">Special Intensive Revision (SIR) 2026 - Adnan Quddusi Initiative</p>
+        <p style="margin:5px 0 0; opacity:0.8;">Special Intensive Revision (SIR) 2026 - AIMTM NGO Initiative</p>
     </div>
 
     <div class="form-body">
         <form id="sirForm">
             
             <section>
-                <div class="section-header">Personal & Authenticated Contact</div>
+                <div class="section-header">Personal & Identity Information</div>
                 <div class="grid">
-                    <div class="field"><label>Full Name</label><input type="text" name="name" required></div>
+                    <div class="field"><label>Full Name</label><input type="text" name="name" required placeholder="As per Aadhaar"></div>
                     <div class="field"><label>Aadhaar Number (VID)</label><input type="text" name="aadhar" maxlength="12" placeholder="[Aadhaar Redacted]"></div>
                     
                     <div class="field highlight-box full">
                         <label style="color: var(--uidai-blue);">Aadhaar-Linked Mobile Number</label>
-                        <input type="tel" name="aadhar_linked_phone" placeholder="Enter phone number linked with Aadhaar " required>
-                        <small style="display:block; margin-top:5px; color:#d97706;">* This number will be used for contacting you to help.</small>
+                        <input type="tel" name="aadhar_linked_phone" placeholder="Enter 10-digit mobile number" required>
+                        <small style="display:block; margin-top:5px; color:#d97706;">* We will use this number to contact you via WhatsApp/Call for support.</small>
                     </div>
 
                     <div class="field"><label>Father's Name</label><input type="text" name="father"></div>
                     <div class="field"><label>Mother's Name</label><input type="text" name="mother"></div>
-                    <div class="field full"><label>Husband's Name (Optional)</label><input type="text" name="husband"></div>
+                    <div class="field full"><label>Husband's Name (If Applicable)</label><input type="text" name="husband"></div>
                 </div>
             </section>
 
             <section>
-                <div class="section-header">OLD CONSTITUENCY (Telangana)</div>
+                <div class="section-header">Electoral Constituency (Telangana)</div>
                 <div class="grid">
                     <div class="field">
                         <label>District</label>
@@ -147,56 +148,54 @@
                             <option value="">Select District First</option>
                         </select>
                     </div>
-                    <div class="field full"><label>OLD Constituency (As of 2002)</label><input type="text" name="old_ac"></div>
+                    <div class="field full"><label>Old Constituency (Name in 2002/Prior)</label><input type="text" name="old_ac" placeholder="Name of old AC if known"></div>
                 </div>
             </section>
 
             <section>
-                <div class="section-header">Issue Type & Documentation</div>
+                <div class="section-header">Issue Details & Support Request</div>
                 <div class="grid">
                     <div class="field">
                         <label>Primary Issue </label>
                         <select name="issue_category" required>
                             <option value="">-- Select Category --</option>
-                            <option value="MISSING_NAME">Name Missing from Roll</option>
-                            <option value="SHIFTED">Shifted / Migration Case</option>
-                            <option value="WRONG_DELETION">Wrongful Deletion Request</option>
-                            <option value="DATA_CORRECTION">Correction in Personal Info</option>
+                            <option value="MISSING_NAME">Name Missing from Voter List</option>
+                            <option value="SHIFTED">Address Shifted / Migration</option>
+                            <option value="WRONG_DELETION">Name Wrongfully Deleted</option>
+                            <option value="DATA_CORRECTION">Correction in Details</option>
                             <option value="DEATH_REPORT">Reporting Deceased Voter</option>
                         </select>
                     </div>
                     <div class="field">
-                        <label>Available Proof for Verification</label>
+                        <label>Verification Document Available</label>
                         <select name="document_check" required>
                             <option value="">-- Select Document --</option>
                             <option value="VOTER_ID">Old Voter ID (EPIC Card)</option>
                             <option value="AADHAAR_DOC">Aadhaar Card</option>
                             <option value="RATION_CARD">Ration Card (FSC)</option>
-                            <option value="PASSPORT">Indian Passport</option>
-                            <option value="ELECTRICITY_BILL">Electricity Bill (Current Address)</option>
-                            <option value="GAS_CONNECTION">Gas Connection Receipt</option>
-                            <option value="RESIDENTIAL_CERT">Residential Certificate</option>
-                            <option value="MUNICIPAL_TAX">Property/Municipal Tax Receipt</option>
+                            <option value="ELECTRICITY_BILL">Electricity Bill</option>
+                            <option value="OTHER">Other Proof</option>
                         </select>
                     </div>
-                    <div class="field full"><label>Additional Description / Issue Details</label><textarea name="remarks" rows="3"></textarea></div>
+                    <div class="field full"><label>Additional Details / Remarks</label><textarea name="remarks" rows="3" placeholder="Describe your issue in detail..."></textarea></div>
                 </div>
             </section>
 
             <input type="hidden" name="admin_phone" value="918125570156">
             <input type="hidden" name="api_id" value="BFACbUdGPwdt">
 
-            <button type="submit" id="submitBtn" class="submit-btn">Proceed to Verification</button>
+            <button type="submit" id="submitBtn" class="submit-btn">Send Details for Support</button>
         </form>
     </div>
     
     <div class="footer">
-        AIMTM Adnan Quddusi Khairatabad President | Service Data Capture <br>
-        © 2026 FREE SIR AIMTM  NGO  Electoral Services
+        AIMTM Khairatabad - Adnan Quddusi President Initiative<br>
+        © 2026 SIR Telangana Electoral Support Portal | NGO Initiative
     </div>
 </div>
 
 <script>
+    // District & Constituency Data
     const telanganaData = {
         "Hyderabad": ["Musheerabad", "Malakpet", "Amberpet", "Khairatabad", "Jubilee Hills", "Sanathnagar", "Nampally", "Karwan", "Goshamahal", "Charminar", "Chandrayangutta", "Yakutpura", "Bahadurpura", "Secunderabad", "Secunderabad Cantt."],
         "Medchal-Malkajgiri": ["Medchal", "Malkajgiri", "Quthbullapur", "Kukatpally", "Uppal"],
@@ -225,7 +224,6 @@
     function updateACList() {
         const selectedDist = dMenu.value;
         aMenu.innerHTML = '<option value="">-- Choose Constituency --</option>';
-        
         if(telanganaData[selectedDist]) {
             aMenu.disabled = false;
             telanganaData[selectedDist].forEach(ac => {
@@ -239,13 +237,14 @@
         }
     }
 
-    // Submission Logic
+    // Webhook Submission Logic
     document.getElementById('sirForm').addEventListener('submit', function(e) {
         e.preventDefault();
         const btn = document.getElementById('submitBtn');
+        // Your current Google Script Web App URL
         const scriptUrl = 'https://script.google.com/macros/s/AKfycbyxMQDb5e2mFeQEjpMT0LFg_xxKRKbmv5NQdpq63hGYss4LyVdMF_kuTOe4OlHed36QmA/exec';
         
-        btn.innerText = "Submitting...";
+        btn.innerText = "Processing...";
         btn.disabled = true;
 
         const formData = new FormData(this);
@@ -257,15 +256,15 @@
             body: JSON.stringify(data)
         })
         .then(() => {
-            alert("Data Sent Successfully! Check your Email and WhatsApp.");
+            alert("Success! Your issue has been registered. Adnan Quddusi's team will connect with you on WhatsApp soon.");
             this.reset();
-            btn.innerText = "Proceed to Verification";
+            btn.innerText = "Send Details for Support";
             btn.disabled = false;
         })
         .catch((error) => {
             console.error('Error:', error);
-            alert("Connection Error.");
-            btn.innerText = "Proceed to Verification";
+            alert("System Error. Please check your internet and try again.");
+            btn.innerText = "Send Details for Support";
             btn.disabled = false;
         });
     });
