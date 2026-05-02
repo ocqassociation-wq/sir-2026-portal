@@ -77,8 +77,11 @@
                 <div class="field"><label>Full Name</label><input type="text" name="name" required placeholder="As per Aadhaar"></div>
                 <div class="field"><label>Aadhaar / VID</label><input type="text" name="aadhar" maxlength="12" placeholder="XXXX XXXX XXXX"></div>
                 <div class="field full" style="background:#fff9f2; padding:15px; border-left:4px solid var(--accent);">
-                    <label>WhatsApp Number (Aadhaar Linked)</label>
+                    <label> Number linked with aadhar  </label>
                     <input type="tel" name="aadhar_linked_phone" required>
+                    <label> Whatsapp Number  </label>
+                    <input type="tel" name="aadhar_linked_phone" required>
+
                 </div>
                 <div class="field"><label>Father's Name</label><input type="text" name="father"></div>
                 <div class="field"><label>Mother's Name</label><input type="text" name="mother"></div>
@@ -212,7 +215,7 @@
             body: JSON.stringify(Object.fromEntries(new FormData(this).entries()))
         })
         .then(() => {
-            alert("Success! Your issue has been registered. Our team will contact you shortly.");
+            alert("Success! Your issue has been registered. ADNAN QUDDUSI team will contact you shortly.");
             this.reset(); btn.innerText = "Submit Request for Help"; btn.disabled = false;
             document.getElementById('bloResult').style.display = 'none';
         })
