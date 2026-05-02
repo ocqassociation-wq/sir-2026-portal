@@ -75,10 +75,11 @@
             <div class="section-header">Personal Information</div>
             <div class="form-grid">
                 <div class="field"><label>Full Name</label><input type="text" name="name" required placeholder="As per Aadhaar"></div>
-                <div class="field"><label>Aadhaar / VID</label><input type="text" name="aadhar" maxlength="12" placeholder="XXXX XXXX XXXX"></div>
+                <div class="field"><label>Aadhaar Number </label><input type="text" name="aadhar" maxlength="12" placeholder="XXXX XXXX XXXX"></div>
                 <div class="field full" style="background:#fff9f2; padding:15px; border-left:4px solid var(--accent);">
                     <label> Number linked with aadhar  </label>
                     <input type="tel" name="aadhar_linked_phone" required>
+                    
                     <label> Whatsapp Number  </label>
                     <input type="tel" name="aadhar_linked_phone" required>
 
@@ -203,11 +204,14 @@
         } else { aMenu.disabled = true; }
     }
 
-    // 4. Form Submit
+    // 4. // 4. Form Submit Logic with WhatsApp Link Redirect
     document.getElementById('sirForm').addEventListener('submit', function(e) {
         e.preventDefault();
         const btn = document.getElementById('submitBtn');
-        btn.innerText = "Sending Details..."; btn.disabled = true;
+        const sirForm = this;
+        
+        btn.innerText = "Sending Details..."; 
+        btn.disabled = true;
 
         fetch(scriptUrl, {
             method: 'POST',
@@ -215,11 +219,31 @@
             body: JSON.stringify(Object.fromEntries(new FormData(this).entries()))
         })
         .then(() => {
-            alert("Success! Your issue has been registered. ADNAN QUDDUSI team will contact you shortly.");
-            this.reset(); btn.innerText = "Submit Request for Help"; btn.disabled = false;
+            // Create a custom success overlay or alert
+            const name = sirForm.elements['name'].value;
+            const waLink = "https://wa.me/919154332807?text=" + 
+                           encodeURIComponent("Hello, I am " + name + ". I just submitted my SIR 2026 verification form and I need further assistance regarding my voter details.");
+
+            // Clear the form and hide BLO result
+            sirForm.reset();
+            btn.innerText = "Submit Request for Help";
+            btn.disabled = false;
             document.getElementById('bloResult').style.display = 'none';
+
+            // Custom Notification with the WhatsApp Hyperlink
+            const confirmAction = confirm("Success! Your issue has been registered.\n\nWould you like to connect with our support team on WhatsApp immediately?");
+            
+            if (confirmAction) {
+                window.location.href = waLink; // Land user on WhatsApp
+            } else {
+                alert("Thank you. You can reach us at +91 9154332807 at any time.");
+            }
         })
-        .catch(() => { alert("Error sending data. Please check your connection."); btn.disabled = false; });
+        .catch((error) => { 
+            console.error('Error:', error);
+            alert("Error sending data. Please check your internet connection."); 
+            btn.disabled = false; 
+        });
     });
 </script>
 </body>
