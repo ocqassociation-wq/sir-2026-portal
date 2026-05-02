@@ -3,128 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIR Telangana 2026 AIMTM | Adnan Quddusi Initiative</title>
+    <title>SIR Telangana 2026 | AIMTM - Adnan Quddusi Initiative</title>
     <style>
-        :root {
-            --uidai-blue: #09347a;
-            --uidai-orange: #ff9933;
-            --gov-grey: #f4f7f9;
-            --border-color: #ced4da;
-        }
-
-        body {
-            font-family: "Segoe UI", Arial, sans-serif;
-            background-color: var(--gov-grey);
-            margin: 0; padding: 0;
-            color: #333;
-        }
-
-        .top-nav {
-            background: #fff;
-            border-bottom: 3px solid var(--uidai-orange);
-            padding: 10px 10%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .container {
-            max-width: 850px;
-            margin: 30px auto;
-            background: #fff;
-            border-radius: 4px;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-
-        .header-banner {
-            background: var(--uidai-blue);
-            color: white;
-            padding: 25px;
-            text-align: center;
-        }
-
-        .form-body { padding: 35px; }
-
-        section { margin-bottom: 30px; }
+        :root { --primary: #09347a; --accent: #ff9933; --bg: #f4f7f9; --card: #ffffff; --success: #28a745; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: var(--bg); margin: 0; color: #333; }
+        .header { background: var(--primary); color: white; padding: 20px; text-align: center; border-bottom: 5px solid var(--accent); }
+        .top-nav { background: #fff; border-bottom: 3px solid var(--accent); padding: 10px 10%; display: flex; align-items: center; justify-content: space-between; }
+        .container { max-width: 850px; margin: 20px auto; padding: 0 15px; }
         
-        .section-header {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--uidai-blue);
-            border-bottom: 1px solid #dee2e6;
-            margin-bottom: 20px;
-            padding-bottom: 8px;
-        }
-
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .box { background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .search-helper { background: #fff3cd; border: 1px solid #ffeeba; text-align: center;}
+        .search-input { width: 100%; padding: 12px; margin-top: 10px; border: 2px solid var(--primary); border-radius: 4px; font-size: 16px; box-sizing: border-box; }
+        
+        #bloResult { margin-top: 15px; padding: 15px; background: #e8f5e9; border-radius: 4px; display: none; border-left: 5px solid var(--success); line-height: 1.6; }
+        
+        .section-header { font-size: 18px; font-weight: 600; color: var(--primary); border-bottom: 1px solid #dee2e6; margin-bottom: 20px; padding-bottom: 8px; margin-top: 10px;}
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
         .full { grid-column: span 2; }
-
-        label { display: block; font-weight: 600; font-size: 13px; margin-bottom: 8px; color: #495057; }
         
-        input, select, textarea {
-            width: 100%; padding: 12px; border: 1px solid var(--border-color);
-            border-radius: 4px; font-size: 14px; box-sizing: border-box;
-            background-color: #fff;
-        }
-
-        input:focus, select:focus { border-color: var(--uidai-blue); outline: none; box-shadow: 0 0 0 3px rgba(9,52,122,0.1); }
-
-        .highlight-box {
-            background: #fff9f2;
-            border-left: 5px solid var(--uidai-orange);
-            padding: 20px;
-            margin-bottom: 25px;
-        }
-
-        .submit-btn {
-            background: var(--uidai-blue);
-            color: white;
-            border: none;
-            padding: 18px;
-            width: 100%;
-            font-size: 16px;
-            font-weight: 700;
-            border-radius: 4px;
-            cursor: pointer;
-            text-transform: uppercase;
-            transition: 0.3s;
-        }
-
+        label { display: block; font-weight: 600; font-size: 13px; margin-bottom: 5px; color: #495057; }
+        input, select, textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 14px; }
+        
+        .highlight-box { background: #fff9f2; border-left: 5px solid var(--accent); padding: 20px; margin-bottom: 25px; }
+        .submit-btn { background: var(--primary); color: white; width: 100%; padding: 18px; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; text-transform: uppercase; font-size: 16px; transition: 0.3s; }
         .submit-btn:hover { background: #072a63; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
-        .submit-btn:disabled { background: #6c757d; cursor: not-allowed; }
-
         .footer { text-align: center; font-size: 12px; color: #6c757d; padding: 20px; border-top: 1px solid #eee; }
 
-        @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } .full { grid-column: span 1; } .top-nav { padding: 10px 5%; flex-direction: column; text-align: center; gap: 10px; } }
+        @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } .full { grid-column: span 1; } .top-nav { flex-direction: column; text-align: center; } }
     </style>
 </head>
 <body>
 
 <div class="top-nav">
-    <div style="color: var(--uidai-blue); font-size: 22px; font-weight: 800;">SIR 2026</div>
+    <div style="color: var(--primary); font-size: 22px; font-weight: 800;">SIR 2026</div>
     <div style="text-align: right; font-size: 11px;">ADNAN QUDDUSI INITIATIVE<br>Electoral Revision Services</div>
 </div>
 
+<div class="header">
+    <h2 style="margin:0;">Data Verification & Support Portal</h2>
+    <p style="margin:5px 0 0; opacity:0.8;">Special Intensive Revision (SIR) 2026 - AIMTM NGO Initiative</p>
+</div>
+
 <div class="container">
-    <div class="header-banner">
-        <h2 style="margin:0;">Data Verification & Support Portal</h2>
-        <p style="margin:5px 0 0; opacity:0.8;">Special Intensive Revision (SIR) 2026 - AIMTM NGO Initiative</p>
+    
+    <!-- STEP 1: 2002 SEARCH -->
+    <div class="box search-helper">
+        <h3>Step 1: Find 2002 Voter Data</h3>
+        <p>If you don't know your old details, search the 2002 database first:</p>
+        <a href="https://mintcream-grouse-474676.hostingersite.com/" target="_blank" style="background:#d9534f; color:white; padding:10px 20px; text-decoration:none; border-radius:5px; font-weight:bold; display:inline-block;">🔍 Search 2002 Voter ID</a>
     </div>
 
-    <div class="form-body">
+    <!-- STEP 2: BLO SEARCH -->
+    <div class="box" style="border: 2px solid var(--primary);">
+        <h3>Step 2: Find Your BLO Details</h3>
+        <p style="font-size: 13px;">Enter your <b>Part Number</b> to get BLO Name and Mobile instantly:</p>
+        <input type="number" id="partSearch" class="search-input" placeholder="Type Part Number (e.g. 571)...">
+        <div id="bloResult"><div id="bloDataText">Loading BLO database...</div></div>
+    </div>
+
+    <!-- STEP 3: MAIN FORM -->
+    <div class="box">
+        <h3 style="text-align: center;">Step 3: Registration Form</h3>
         <form id="sirForm">
             
             <section>
                 <div class="section-header">Personal & Identity Information</div>
-                <div class="grid">
+                <div class="form-grid">
                     <div class="field"><label>Full Name</label><input type="text" name="name" required placeholder="As per Aadhaar"></div>
-                    <div class="field"><label>Aadhaar Number (VID)</label><input type="text" name="aadhar" maxlength="12" placeholder="[Aadhaar Redacted]"></div>
+                    <div class="field"><label>Aadhaar Number (VID)</label><input type="text" name="aadhar" maxlength="12" placeholder="XXXX XXXX XXXX"></div>
                     
                     <div class="field highlight-box full">
-                        <label style="color: var(--uidai-blue);">Aadhaar-Linked Mobile Number</label>
-                        <input type="tel" name="aadhar_linked_phone" placeholder="Enter 10-digit mobile number" required>
-                        <small style="display:block; margin-top:5px; color:#d97706;">* We will use this number to contact you via WhatsApp/Call for support.</small>
+                        <label style="color: var(--primary);">Aadhaar-Linked Mobile Number</label>
+                        <input type="tel" name="aadhar_linked_phone" placeholder="Enter mobile number" required>
+                        <small style="display:block; margin-top:5px; color:#d97706;">* team will contact you on this number.</small>
                     </div>
 
                     <div class="field"><label>Father's Name</label><input type="text" name="father"></div>
@@ -135,7 +86,7 @@
 
             <section>
                 <div class="section-header">Electoral Constituency (Telangana)</div>
-                <div class="grid">
+                <div class="form-grid">
                     <div class="field">
                         <label>District</label>
                         <select id="distSelect" name="district" onchange="updateACList()" required>
@@ -143,47 +94,42 @@
                         </select>
                     </div>
                     <div class="field">
-                        <label>Current Assembly Constituency (AC)</label>
+                        <label>Current AC</label>
                         <select id="acSelect" name="current_ac" required disabled>
                             <option value="">Select District First</option>
                         </select>
                     </div>
-                    <div class="field full"><label>Old Constituency (Name in 2002/Prior)</label><input type="text" name="old_ac" placeholder="Name of old AC if known"></div>
+                    <div class="field"><label>Part No.</label><input type="text" name="part_no" id="formPartNo" placeholder="From Step 2"></div>
+                    <div class="field"><label>Old AC (2002)</label><input type="text" name="old_ac" placeholder="From Step 1"></div>
                 </div>
             </section>
 
             <section>
-                <div class="section-header">Issue Details & Support Request</div>
-                <div class="grid">
+                <div class="section-header">Issue & Remarks</div>
+                <div class="form-grid">
                     <div class="field">
-                        <label>Primary Issue </label>
+                        <label>Primary Issue</label>
                         <select name="issue_category" required>
-                            <option value="">-- Select Category --</option>
-                            <option value="MISSING_NAME">Name Missing from Voter List</option>
-                            <option value="SHIFTED">Address Shifted / Migration</option>
-                            <option value="WRONG_DELETION">Name Wrongfully Deleted</option>
-                            <option value="DATA_CORRECTION">Correction in Details</option>
-                            <option value="DEATH_REPORT">Reporting Deceased Voter</option>
+                            <option value="MISSING_NAME">Name Missing</option>
+                            <option value="SHIFTED">Address Shifted</option>
+                            <option value="DATA_CORRECTION">Correction</option>
+                            <option value="DEATH_REPORT">Deceased Voter</option>
                         </select>
                     </div>
                     <div class="field">
-                        <label>Verification Document Available</label>
+                        <label>Document Available</label>
                         <select name="document_check" required>
-                            <option value="">-- Select Document --</option>
-                            <option value="VOTER_ID">Old Voter ID (EPIC Card)</option>
+                            <option value="VOTER_ID">Old Voter ID</option>
                             <option value="AADHAAR_DOC">Aadhaar Card</option>
-                            <option value="RATION_CARD">Ration Card (FSC)</option>
-                            <option value="ELECTRICITY_BILL">Electricity Bill</option>
+                            <option value="RATION_CARD">Ration Card</option>
                             <option value="OTHER">Other Proof</option>
                         </select>
                     </div>
-                    <div class="field full"><label>Additional Details / Remarks</label><textarea name="remarks" rows="3" placeholder="Describe your issue in detail..."></textarea></div>
+                    <div class="field full"><label>Additional Details</label><textarea name="remarks" rows="3"></textarea></div>
                 </div>
             </section>
 
-            <input type="hidden" name="admin_phone" value="918125570156">
-            <input type="hidden" name="api_id" value="BFACbUdGPwdt">
-
+            <input type="hidden" name="blo_name" id="formBloName">
             <button type="submit" id="submitBtn" class="submit-btn">Send Details for Support</button>
         </form>
     </div>
@@ -195,80 +141,71 @@
 </div>
 
 <script>
-    // District & Constituency Data
+    const scriptUrl = 'https://script.google.com/macros/s/AKfycbwGs_g7Fmv7QhUGq_Ww0K3Q7Pmis7tt2LFu7mwe6cD4LcvtELoT62Lo3ftiwZ-PyraaWQ/exec';
+    let bloDatabase = {};
+
+    // 1. Fetch BLO data from Sheet
+    async function loadBLOs() {
+        try {
+            const response = await fetch(scriptUrl);
+            bloDatabase = await response.json();
+            document.getElementById('bloDataText').innerText = "Database Ready. Enter Part Number above.";
+        } catch (e) {
+            document.getElementById('bloDataText').innerText = "Error loading BLO data. Please refresh.";
+        }
+    }
+    loadBLOs();
+
+    // 2. BLO Search Logic
+    document.getElementById('partSearch').addEventListener('input', function() {
+        const val = this.value;
+        const resDiv = document.getElementById('bloResult');
+        const textDiv = document.getElementById('bloDataText');
+        if (bloDatabase[val]) {
+            resDiv.style.display = 'block';
+            const b = bloDatabase[val];
+            textDiv.innerHTML = `👤 <b>BLO:</b> ${b.name}<br>📞 <b>Mobile:</b> <a href="tel:${b.mobile}">${b.mobile}</a><br>📍 <b>Loc:</b> ${b.loc}`;
+            document.getElementById('formPartNo').value = val;
+            document.getElementById('formBloName').value = b.name;
+        } else { resDiv.style.display = 'none'; }
+    });
+
+    // 3. District Data
     const telanganaData = {
         "Hyderabad": ["Musheerabad", "Malakpet", "Amberpet", "Khairatabad", "Jubilee Hills", "Sanathnagar", "Nampally", "Karwan", "Goshamahal", "Charminar", "Chandrayangutta", "Yakutpura", "Bahadurpura", "Secunderabad", "Secunderabad Cantt."],
         "Medchal-Malkajgiri": ["Medchal", "Malkajgiri", "Quthbullapur", "Kukatpally", "Uppal"],
-        "Ranga Reddy": ["Ibrahimpatnam", "Lal Bahadur Nagar", "Maheshwaram", "Rajendranagar", "Serilingampally", "Chevella", "Kalwakurthy", "Shadnagar"],
-        "Nizamabad": ["Armur", "Bodhan", "Nizamabad Urban", "Nizamabad Rural", "Balkonda"],
-        "Warangal": ["Warangal West", "Warangal East", "Wardhannapet", "Narsampet", "Parkal"],
-        "Karimnagar": ["Karimnagar", "Choppadandi", "Huzurabad", "Manakondur"],
-        "Khammam": ["Khammam", "Palair", "Madhira", "Wyra", "Sathupalle"],
-        "Nalgonda": ["Nalgonda", "Munugode", "Devarakonda", "Nagarjuna Sagar", "Miryalaguda", "Nakrekal", "Thungathurthi", "Alair"],
-        "Siddipet": ["Siddipet", "Gajwel", "Dubbak", "Husnabad"],
-        "Sangareddy": ["Sangareddy", "Patancheru", "Narayankhed", "Andole", "Zahirabad"],
-        "Mahabubnagar": ["Mahabubnagar", "Jadcherla", "Devarkadra", "Narayanpet"],
-        "Jagtial": ["Jagtial", "Koratla", "Dharmapuri"]
+        "Ranga Reddy": ["Ibrahimpatnam", "Lal Bahadur Nagar", "Maheshwaram", "Rajendranagar", "Serilingampally", "Chevella", "Kalwakurthy", "Shadnagar"]
     };
-
     const dMenu = document.getElementById('distSelect');
     const aMenu = document.getElementById('acSelect');
-
-    Object.keys(telanganaData).sort().forEach(district => {
-        let opt = document.createElement('option');
-        opt.value = district;
-        opt.innerHTML = district;
-        dMenu.appendChild(opt);
-    });
+    Object.keys(telanganaData).sort().forEach(d => { let o = document.createElement('option'); o.value = d; o.text = d; dMenu.add(o); });
 
     function updateACList() {
-        const selectedDist = dMenu.value;
-        aMenu.innerHTML = '<option value="">-- Choose Constituency --</option>';
-        if(telanganaData[selectedDist]) {
+        const val = dMenu.value;
+        aMenu.innerHTML = '<option value="">-- Choose AC --</option>';
+        if(telanganaData[val]) {
             aMenu.disabled = false;
-            telanganaData[selectedDist].forEach(ac => {
-                let opt = document.createElement('option');
-                opt.value = ac;
-                opt.innerHTML = ac;
-                aMenu.appendChild(opt);
-            });
-        } else {
-            aMenu.disabled = true;
-        }
+            telanganaData[val].forEach(ac => { let o = document.createElement('option'); o.value = ac; o.text = ac; aMenu.add(o); });
+        } else { aMenu.disabled = true; }
     }
 
-    // Webhook Submission Logic
+    // 4. Form Submit
     document.getElementById('sirForm').addEventListener('submit', function(e) {
         e.preventDefault();
         const btn = document.getElementById('submitBtn');
-        // Your current Google Script Web App URL
-        const scriptUrl = 'https://script.google.com/macros/s/AKfycbwGs_g7Fmv7QhUGq_Ww0K3Q7Pmis7tt2LFu7mwe6cD4LcvtELoT62Lo3ftiwZ-PyraaWQ/exec';
+        btn.innerText = "Processing..."; btn.disabled = true;
         
-        btn.innerText = "Processing...";
-        btn.disabled = true;
-
-        const formData = new FormData(this);
-        const data = Object.fromEntries(formData.entries());
-
         fetch(scriptUrl, {
             method: 'POST',
             mode: 'no-cors',
-            body: JSON.stringify(data)
+            body: JSON.stringify(Object.fromEntries(new FormData(this).entries()))
         })
         .then(() => {
             alert("Success! Your issue has been registered. Adnan Quddusi's team will connect with you on WhatsApp soon.");
-            this.reset();
-            btn.innerText = "Send Details for Support";
-            btn.disabled = false;
+            this.reset(); btn.innerText = "Send Details for Support"; btn.disabled = false;
         })
-        .catch((error) => {
-            console.error('Error:', error);
-            alert("System Error. Please check your internet and try again.");
-            btn.innerText = "Send Details for Support";
-            btn.disabled = false;
-        });
+        .catch(() => { alert("System Error. Try again."); btn.disabled = false; });
     });
 </script>
-
 </body>
 </html>
